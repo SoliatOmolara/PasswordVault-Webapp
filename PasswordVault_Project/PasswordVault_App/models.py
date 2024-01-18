@@ -7,6 +7,7 @@ class PasswordVault(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     website_name = models.CharField(max_length=250)
     website_link = models.URLField()
+    website_password = models.CharField(max_length=100)
     date = models.DateTimeField()
     
     def __str__(self):
