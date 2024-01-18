@@ -24,8 +24,8 @@
                         <a href="{% url 'index' %}" class="block py-2 pl-3 pr-4 text-purple-900 font-medium hover:underline">Go back Home</a>
                     </li>
                     <li>
-                        <a href="{% url 'logout' %}">
-                            <button type="button" class="block py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Logout</button>
+                        <a href="{% url 'login' %}">
+                            <button type="button" class="block py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Login</button>
                         </a>
                     </li>
                 </ul>
@@ -34,32 +34,22 @@
     </nav>
 
      <!-- Main content -->
-     <div class="items-center justify-center mt-20 flex flex-col">
-        <div class="bg-gray-50 p-8 shadow-md rounded-lg transition-transform transform hover:scale-105 max-w-md w-full">
-            <!-- Login form -->
-            <form class="space-y-4" method="POST" action="{% url 'password-create' %}">
-                {% csrf_token %}
-                <h2 class="text-purple-900 text-center text-2xl font-bold">Create New</h2>
-                <div>
-                    <label for="websiteName" class="text-purple-900 block mb-1 font-medium">Website Name</label>
-                    <input type="text" id="WebsiteName" name="website_name" placeholder="Enter the website name..." class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
-                </div>
-                <div>
-                    <label for="websitelink" class="text-purple-900 block mb-1 font-medium">Website Link</label>
-                    <input type="url" id="websitelink" name="website_link" placeholder="Enter your website link..." class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
-                </div>
-                <div>
-                    <label for="password" class="text-purple-900 block mb-1 font-medium">Password</label>
-                    <input type="password" id="password" name="website_password" placeholder="Enter your password..." class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
-                </div>
-                <div>
-                    <label for="date" class="text-purple-900 block mb-1 font-medium">Date</label>
-                    <input type="datetime-local" id="date" name="date" class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
-                </div>
-                <button type="submit" class="w-full bg-purple-900 text-white p-2 rounded hover:underline">Save</button>
-            </form>
+     <div class="items-center justify-center mx-auto mt-20 flex flex-col">
+        <div class="text-center bg-gray-50 p-8 shadow-md rounded-lg transition-transform transform hover:scale-105 max-w-md w-full">
+            <p class="text-gray-900 font-semibold text-gray-600 mb-2">
+                Are you sure you want to Logout?
+            </p>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">
+                        Yes</button>
+                    <a href="{% url 'index' %}">
+                        <button type="button" class="py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">
+                        Cancel</button> 
+                    </a>  
+                </form>
         </div>
-
+     </div>
     <br>
     <br>
     <br>

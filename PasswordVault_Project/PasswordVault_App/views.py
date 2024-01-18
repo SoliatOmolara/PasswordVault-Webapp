@@ -59,6 +59,9 @@ def Signup(request):
         
     return render(request, 'signup.html')
 
-def user_logout(request):
-    logout(request)
-    return redirect('/')
+def Logout(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('/')
+    
+    return render(request, 'logout.html')
