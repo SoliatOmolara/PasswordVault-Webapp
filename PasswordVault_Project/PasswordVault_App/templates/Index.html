@@ -19,22 +19,32 @@
                 </svg>
             </button>
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                {% if user.is_authenticated %}
                 <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 md:mt-0 md:border-0">
                     <li>
-                        <a href="#" class="block py-2 pl-3 pr-4 text-purple-900 font-medium hover:underline">Login</a>
+                        <p class="block py-2 pl-3 pr-4 text-purple-900 font-medium">Hello, {{ user.username }}</p>
                     </li>
                     <li>
                         <a href="#">
+                            <button type="button" class="block py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Logout</button>
+                        </a>
+                    </li>
+                </ul>
+                {% else %}
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-100 md:flex-row md:space-x-8 md:mt-0 md:border-0">
+                    <li>
+                        <a href="{% url 'Login' %}" class="block py-2 pl-3 pr-4 text-purple-900 font-medium hover:underline">Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'Signup' %}">
                             <button type="button" class="block py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-900 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">SignUp</button>
                         </a>
                     </li>
                 </ul>
+                {% endif %}
             </div>
         </div>
     </nav>
-<br>
-<br>
-    <!-- Main -->
     <div class="flex-grow container mx-auto mt-10 px-4 sm:px-0 max-w-3xl">
         <div class="max-w-3xl mx-auto bg-gray-50 p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col">
 
@@ -46,9 +56,15 @@
                     Simplify your digital life with PasswordVault — your all-in-one solution for password management. Securely store, update, and synchronize your passwords across devices. It's time to experience the effortless side of online security.
                 </p>
                 <br>
-                <a href="{% url 'Signup' %}">
-                    <button type="button" class="py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Get Started</button>
-                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'password-create' %}">
+                        <button type="button" class="py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Save Passwords</button>
+                    </a>
+                {% else %}
+                    <a href="{% url 'Signup' %}">
+                        <button type="button" class="py-2 pl-3 pr-4 text-white bg-purple-900 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-900 font-medium rounded-lg text-sm text-center dark:bg-purple-900 hover:underline dark:focus:ring-purple-800">Get Started</button>
+                    </a>
+                {% endif %}
             </div>
         </div>
     <br>

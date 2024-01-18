@@ -17,7 +17,4 @@ class PasswordVaultForm(forms.ModelForm):
         ]
 
 
-class CustomUserCreationForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password', 'password2']
+

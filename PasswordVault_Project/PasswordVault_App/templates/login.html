@@ -37,15 +37,24 @@
      <div class="items-center justify-center h-screen flex flex-col">
         <div class="bg-gray-50 p-8 shadow-md rounded-lg transition-transform transform hover:scale-105 max-w-md w-full">
             <!-- Login form -->
-            <form class="space-y-8" action="" method="POST">
+            <form class="space-y-8" method="POST" action="{% url 'Login' %}">
+                {% csrf_token %}
+
+                {% if error_message %}
+                <div align="center" style="color: red;">
+                    <h2>
+                        {{ error_message }}
+                    </h2>
+                </div>
+                {% endif %}
                 <h2 class="text-purple-900 text-center text-2xl font-bold">Login</h2>
                 <div>
                     <label for="username" class="text-purple-900 block mb-1 font-medium">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username..." class="w-full p-2 text-gray-200 bg-purple-100 border rounded">
+                    <input type="text" id="username" name="username" placeholder="Enter your username..." class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
                 </div>
                 <div>
                     <label for="password" class="text-purple-900 block mb-1 font-medium">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password..." class="w-full p-2 text-gray-200 bg-purple-100 border rounded">
+                    <input type="password" id="password" name="password" placeholder="Enter your password..." class="w-full p-2 text-purple-900 bg-purple-100 border rounded">
                 </div>
                 <button type="submit" class="w-full bg-purple-900 text-white p-2 rounded hover:underline">Login</button>
             </form>
